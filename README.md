@@ -7,7 +7,7 @@
 - Ubuntu 20.04.4 LTS
 - bazel 5.1.1 
 - GCC 9.4
-- Python 3.9
+- Python 3.9 (conda env)
 - Tensorflow 2.9.1
 <br>
 <br>
@@ -16,7 +16,7 @@
 The Anaconda installation process can be skipped.  
 But, I recommend configuring the anaconda environment.  
 Because, When building tensorflow, the configure.py file automatically recognizes the anaconda virtual environment path.  
-( etc. /your/path/anaconda3/envs/tensorflow2.9.1/bin/python )
+( etc. /your/path/anaconda3/envs/your-env-name/bin/python )
 - https://docs.anaconda.com/anaconda/install/linux/
 <br>
 <br>
@@ -46,7 +46,7 @@ $ python /your/path/to/tensorflow-2.9.1/configure.py
 ```
   
 In my experience, build failures often occur due to insufficient memory during build using bazel.  
-So, it is recommended to use the --loca_ram_resources option.
+So, it is recommended to use the --local_ram_resources option.
 ```
-$ bazel build [--loca_ram_resources=4096] --config=monolithic //tensorflow/tools/pip_package:build_pip_package
+$ bazel build [--local_ram_resources=4096] --config=monolithic //tensorflow/tools/pip_package:build_pip_package
 ```
